@@ -1,6 +1,6 @@
 {
-    "name": "Temporary - No More Hungry",
+    "name": "No More Hungry",
     "id": "NoMoreHungry",
     "version": "2.0.0",
-    "description": "Removes the food requirement"
+    "description": "Removes the food requirement for villagers"
 }
