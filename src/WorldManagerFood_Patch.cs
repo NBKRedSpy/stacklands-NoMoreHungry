@@ -21,7 +21,7 @@ namespace NoMoreHungry
 			}
 			if (c.CardData is Kid)
 			{
-				__result = 1;
+				__result = Math.Min(1, Plugin.MaxFoodRequirement.Value);
 				return;
 			}
 			__result = 0;
