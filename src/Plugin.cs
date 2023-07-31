@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using HarmonyLib;
 
@@ -22,9 +23,20 @@ The base game normally requires up to two food per villager."
 			//TooltipTerm = "NoMoreHungry_MaxFoodRequirement_Toolikp",
 		});
 
+		MaxFoodRequirement.OnChanged += ValidateMaxFoodRequirement;
+
 		Log = Logger;
 
 
 		Harmony.PatchAll();
 	}
+
+	private static void ValidateMaxFoodRequirement(int newValue)
+	{
+		if(newValue < 0)
+		{
+			MaxFoodRequirement.Value = 0;
+		}
+	}
+
 }

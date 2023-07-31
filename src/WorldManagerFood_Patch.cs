@@ -9,24 +9,9 @@ namespace NoMoreHungry
 	public static class WorldManagerFood_Patch
 	{
 
-		public static void Prefix(GameCard c, ref bool __runOriginal, ref int __result)
+		public static void Postfix(GameCard c, ref bool __runOriginal, ref int __result)
 		{
-			__runOriginal = false;
-
-			if (c.CardData is BaseVillager baseVillager)
-			{
-
-				__result =  Math.Min(baseVillager.GetRequiredFoodCount(), Plugin.MaxFoodRequirement.Value);
-				return;
-			}
-			if (c.CardData is Kid)
-			{
-				__result = Math.Min(1, Plugin.MaxFoodRequirement.Value);
-				return;
-			}
-			__result = 0;
-			return;
-
+			__result = Math.Min(__result, Plugin.MaxFoodRequirement.Value);
 		}
 
 	}
